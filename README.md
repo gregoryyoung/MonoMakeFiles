@@ -10,7 +10,7 @@ usage:
 
 -Create a new directory you want to code in.
 
--Copy somewhere/singlefolder_makefile ./makefile
+-Copy somewhere/srcbin_makefile ./makefile
 
 -edit the makefile change things like OUTPUTTYPE PROJECTNAME etc
 

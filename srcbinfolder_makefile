@@ -4,10 +4,10 @@
 #Project name will make project.exe project.dll etc
 PROJECTNAME = project
 
-#your src directory if you prefer Code/ 
+#your src directory if you prefer Code/ for single folder use ./
 SRCDIR = src/
 
-#your bin directory if you prefer Whatever/
+#your bin directory if you prefer Whatever/ for single folder use ./
 BINDIR = bin/
 
 #libraries to add eg myfoo.dll,somethingelse.dll
