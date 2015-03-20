@@ -1,0 +1,45 @@
+#Project name
+PROJECTNAME = project
+
+#libraries to add eg -r:myfoo.dll
+LIBS=
+
+MCS=gmcs
+
+#type of output exe, winexe, library, module
+OUTPUTTYPE=library
+
+GMCSFLAGS = -debug 
+
+ifeq ($(OUTPUTTYPE),exe)
+	GMCSFLAGS += /target:exe
+	FULLOUTPUT = $(PROJECTNAME).exe
+endif
+ifeq ($(OUTPUTTYPE),library)
+	GMCSFLAGS += /target:library
+	FULLOUTPUT = $(PROJECTNAME).dll
+endif
+ifeq ($(OUTPUTTYPE),winexe)
+	GMCSFLAGS += /target:winexe
+	FULLOUTPUT = $(PROJECTNAME).exe
+endif
+ifeq ($(OUTPUTTYPE),module)
+	GMCSFLAGS += /target:module
+	FULLOUTPUT = $(PROJECTNAME).dll
+endif
+
+all: $(FULLOUTPUT)
+
+CSHARPFILES = $(wildcard *.cs)
+SRC = $(CSHARPFILES)
+
+$(FULLOUTPUT): $(SRC) 
+	$(MCS) /out:$@ $(LIBS) $(GMCSFLAGS) $(SRC)
+
+#install: all
+#       cp $(PROJECTNAME).dll /someplace	
+
+clean:
+	rm -f $(FULLOUTPUT)
+	rm -f $(FULLOUTPUT).mdb
+
