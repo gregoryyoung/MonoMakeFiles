@@ -1,0 +1,59 @@
+#This make file has a src folder and a bin folder. To use edit the things at the top 
+
+#Project name
+PROJECTNAME = project
+
+#your src directory
+SRCDIR = src/
+
+#your bin directory
+BINDIR = bin/
+
+#libraries to add eg -r:myfoo.dll
+LIBS=
+
+#type of output exe, winexe, library, module
+OUTPUTTYPE=library
+
+MCS=gmcs
+
+GMCSFLAGS = -debug 
+
+ifeq ($(OUTPUTTYPE),exe)
+	GMCSFLAGS += /target:exe
+	FULLOUTPUT = $(PROJECTNAME).exe
+endif
+ifeq ($(OUTPUTTYPE),library)
+	GMCSFLAGS += /target:library
+	FULLOUTPUT = $(PROJECTNAME).dll
+endif
+ifeq ($(OUTPUTTYPE),winexe)
+	GMCSFLAGS += /target:winexe
+	FULLOUTPUT = $(PROJECTNAME).exe
+endif
+ifeq ($(OUTPUTTYPE),module)
+	GMCSFLAGS += /target:module
+	FULLOUTPUT = $(PROJECTNAME).dll
+endif
+
+
+CSHARPFILES := $(shell find $(SRCDIR) -name '*.cs')
+SRC = $(CSHARPFILES)
+OUTPUT = $(BINDIR)$(FULLOUTPUT)
+
+
+all: $(FULLOUTPUT)
+
+$(FULLOUTPUT): $(SRC) outputdir 
+	$(MCS) /out:$(OUTPUT) $(LIBS) $(GMCSFLAGS) $(SRC)
+
+outputdir:
+	mkdir -p $(BINDIR)
+
+#install: all
+#       cp $(PROJECTNAME).dll /someplace	
+
+clean:
+	rm -f $(BINDIR)$(PROJECTNAME).exe
+	rm -f $(BINDIR)$(PROJECTNAME).exe.mdb
+
