@@ -12,7 +12,7 @@ CSHARPFILES = $(wildcard *.cs)
 GMCSFLAGS = -debug /target:exe
 SRC = $(CSHARPFILES)
 
-$(PROJECTNAME).dll: $(SRC) 
+$(PROJECTNAME).exe: $(SRC) 
 	$(MCS) /out:$@ $(LIBS) $(GMCSFLAGS) $(SRC)
 
 #install: all
