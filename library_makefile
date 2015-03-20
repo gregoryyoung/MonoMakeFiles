@@ -1,0 +1,24 @@
+#Project name
+PROJECTNAME = project
+
+#libraries to add eg -r:myfoo.dll
+LIBS=
+
+MCS=gmcs
+
+all: $(PROJECTNAME).dll
+
+CSHARPFILES = $(wildcard *.cs)
+GMCSFLAGS = -debug /target:library 
+SRC = $(CSHARPFILES)
+
+$(PROJECTNAME).dll: $(SRC) 
+	$(MCS) /out:$@ $(LIBS) $(GMCSFLAGS) $(SRC)
+
+#install: all
+#       cp $(PROJECTNAME).dll /someplace	
+
+clean:
+	rm -f $(PROJECTNAME).dll
+	rm -f $(PROJECTNAME).dll.mdb
+
