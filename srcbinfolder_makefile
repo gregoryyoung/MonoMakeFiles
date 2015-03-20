@@ -1,22 +1,25 @@
-#This make file has a src folder and a bin folder. To use edit the things at the top 
+#This make file has a src folder and a bin folder. To use edit the 
+#variables at the top of the file.
 
-#Project name
+#Project name will make project.exe project.dll etc
 PROJECTNAME = project
 
-#your src directory
+#your src directory if you prefer Code/ 
 SRCDIR = src/
 
-#your bin directory
+#your bin directory if you prefer Whatever/
 BINDIR = bin/
 
-#libraries to add eg -r:myfoo.dll
+#libraries to add eg myfoo.dll,somethingelse.dll
 LIBS=
 
 #type of output exe, winexe, library, module
 OUTPUTTYPE=library
 
+#C# compiler
 MCS=gmcs
 
+#any other compiler flags
 GMCSFLAGS = -debug 
 
 ifeq ($(OUTPUTTYPE),exe)
@@ -45,7 +48,7 @@ OUTPUT = $(BINDIR)$(FULLOUTPUT)
 all: $(FULLOUTPUT)
 
 $(FULLOUTPUT): $(SRC) outputdir 
-	$(MCS) /out:$(OUTPUT) $(LIBS) $(GMCSFLAGS) $(SRC)
+	$(MCS) /out:$(OUTPUT) -r:$(LIBS) $(GMCSFLAGS) $(SRC)
 
 outputdir:
 	mkdir -p $(BINDIR)
