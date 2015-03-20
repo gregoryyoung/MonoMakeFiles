@@ -8,11 +8,15 @@ These are very very simple makefiles. We can always improve on them (PRs accepte
 
 usage:
 
-Create a new directory you want to code in.
-Copy somewhere/singlefolder_makefile ./makefile
-edit the makefile change things like OUTPUTTYPE PROJECTNAME etc
-Edit some code ... save as .cs files.
-make
+-Create a new directory you want to code in.
+
+-Copy somewhere/singlefolder_makefile ./makefile
+
+-edit the makefile change things like OUTPUTTYPE PROJECTNAME etc
+
+-Edit some code ... save as .cs files.
+
+-make
 
 - singlefolder_makefile is a simple makefile for a single output with source in same folder
 - srcbin_makefile is a simple makefile for source (recursive) in ./src and output to ./bin
