@@ -18,7 +18,6 @@ usage:
 
 -make
 
-- singlefolder_makefile is a simple makefile for a single output with source in same folder
-- srcbin_makefile is a simple makefile for source (recursive) in ./src and output to ./bin
+- srcbin_makefile is a simple makefile for source (recursive) in ./src and output to ./bin you can edit both to be the same if you want to build in place or even use /bin/Debug 
 
 Feel free to add your own.
